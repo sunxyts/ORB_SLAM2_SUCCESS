@@ -13,6 +13,8 @@ ENDIF()
 
 MESSAGE(STATUS "BUILD TYPE:" ${CMAKE_BUILD_TYPE})
 
+SET(CMAKE_CXX_FLAGS "-Wno-error=deprecated-declarations -Wno-deprecated-declarations ")
+
 SET (G2O_LIB_TYPE SHARED)
 
 # There seems to be an issue with MSVC8
@@ -54,8 +56,8 @@ IF(OPENMP_FOUND AND G2O_USE_OPENMP)
 ENDIF(OPENMP_FOUND AND G2O_USE_OPENMP)
 
 # Compiler specific options for gcc
-SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=native") 
-SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O3 -march=native") 
+SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3") # -march=native") 
+SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O3") # -march=native") 
 
 # activate warnings !!!
 SET(g2o_C_FLAGS "${g2o_C_FLAGS} -Wall -W")
